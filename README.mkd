@@ -1,13 +1,18 @@
+
+---
+
 # 📊 Calculadora de Média Ponderada - Interface Gráfica
 
-Este projeto é uma aplicação web simples desenvolvida em Python com **Streamlit** para calcular a **média ponderada** de entradas de mercadorias a partir de um arquivo Excel (.xlsx).
+Este projeto é uma aplicação web simples desenvolvida em Python com **Streamlit** para calcular a **média ponderada** de entradas de mercadorias. Agora com suporte para arquivos `.txt` ou colagem direta de conteúdo copiado da tela do sistema.
 
 ---
 
 ## 🚀 Funcionalidades
 
-- Upload de arquivos `.xlsx`
-- Cálculo da média ponderada com base em quantidade e custo gerencial
+- Upload de arquivos `.txt` com dados no formato `gridConsulta.fill([...])`
+- Alternativamente, colagem direta do conteúdo do `.txt`
+- Cálculo da média ponderada com base em **quantidade** e **custo gerencial**
+- Extração inteligente de dados mesmo com **vírgulas como separador decimal**
 - Interface bonita, interativa e fácil de usar
 - Responsivo e compatível com qualquer navegador
 
@@ -42,7 +47,7 @@ A aplicação abrirá automaticamente no seu navegador padrão (geralmente em `h
 ## 📁 Estrutura do Projeto
 
 ```
-📦 Media-Ponderada-Xlsx/
+📦 Media-Ponderada/
 ├── app.py               # Código principal da aplicação
 ├── requirements.txt     # Bibliotecas necessárias
 └── README.md            # Este arquivo de instruções
@@ -50,12 +55,32 @@ A aplicação abrirá automaticamente no seu navegador padrão (geralmente em `h
 
 ---
 
-## 📚 Sobre o arquivo Excel
+## 📚 Sobre os dados de entrada
 
-O arquivo deve conter as seguintes colunas:
+Você pode fornecer os dados de duas formas:
 
-- **Qtd.** → Quantidade de itens
-- **Custo Gerencial** → Custo por item
-- **Dt.Entrada** → Data de entrada (para ordenação)
+### ✅ Opção 1: Upload de Arquivo `.txt`
+
+- O arquivo deve conter linhas no seguinte padrão:
+  ```
+  gridConsulta.fill(['22/01/2025', '12', '2056085', ..., '8,07', ...]);
+  ```
+- A aplicação extrai automaticamente os valores corretos mesmo que os números usem vírgula como separador decimal (ex: `8,07`).
+
+### ✅ Opção 2: Colagem Manual
+
+- Copie e cole diretamente o conteúdo do `.txt` na caixa de texto da aplicação.
+
+---
+
+## 📊 Sobre os campos obrigatórios
+
+Para o cálculo, os seguintes campos são utilizados:
+
+- **Qtd.** → Quantidade da entrada (posição 4)
+- **Custo Gerencial** → Custo por unidade (posição 17)
+- **Dt.Entrada** → Data da entrada (posição 0)
+
+A aplicação utiliza os valores mais recentes primeiro (ordenando pela data) até atingir a quantidade informada de estoque disponível.
 
 ---
