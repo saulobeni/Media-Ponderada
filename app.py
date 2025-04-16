@@ -3,23 +3,22 @@ import streamlit as st
 
 st.set_page_config(page_title="Média Ponderada", layout="centered")
 
-# Título da aplicação
+# Título
 st.title("Calculadora de Média Ponderada de Entradas")
 
-# Instrução
+# Descricao
 st.markdown("Faça o upload de um arquivo `.xlsx` com as colunas **'Qtd.'**, **'Custo Gerencial'** e **'Dt.Entrada'** para calcular a média ponderada.")
 
-# Upload de arquivo
+# Upload
 uploaded_file = st.file_uploader("📁 Selecione o arquivo Excel", type=["xlsx"])
 
-# Campo de estoque total
+# Estoque total
 total_em_estoque = st.number_input("📦 Total disponível em estoque", min_value=1, value=182, step=1)
 
 if uploaded_file is not None:
     try:
         df = pd.read_excel(uploaded_file)
 
-        # Conversão dos dados
         df["Qtd."] = pd.to_numeric(df["Qtd."].astype(str).str.replace(",", "."), errors="coerce")
         df["Custo Gerencial"] = pd.to_numeric(df["Custo Gerencial"].astype(str).str.replace(",", "."), errors="coerce")
         df = df.dropna(subset=["Qtd.", "Custo Gerencial"])
