@@ -13,7 +13,7 @@ st.markdown("Faça o upload de um arquivo `.xlsx` com as colunas **'Qtd.'**, **'
 uploaded_file = st.file_uploader("📁 Selecione o arquivo Excel", type=["xlsx"])
 
 # Estoque total
-total_em_estoque = st.number_input("📦 Total disponível em estoque", min_value=1, value=182, step=1)
+total_em_estoque = st.number_input("📦 Total disponível em estoque", min_value=1, value=0, step=1)
 
 if uploaded_file is not None:
     try:
