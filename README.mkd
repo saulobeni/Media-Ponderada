@@ -1,0 +1,61 @@
+# 📊 Calculadora de Média Ponderada - Interface Gráfica
+
+Este projeto é uma aplicação web simples desenvolvida em Python com **Streamlit** para calcular a **média ponderada** de entradas de mercadorias a partir de um arquivo Excel (.xlsx).
+
+---
+
+## 🚀 Funcionalidades
+
+- Upload de arquivos `.xlsx`
+- Cálculo da média ponderada com base em quantidade e custo gerencial
+- Interface bonita, interativa e fácil de usar
+- Responsivo e compatível com qualquer navegador
+
+---
+
+## 📦 Requisitos
+
+Certifique-se de ter o **Python 3.8 ou superior** instalado.
+
+---
+
+### 1. Instale as dependências
+
+Você pode instalar todas de uma vez com:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+### 2. Rode a aplicação
+
+```bash
+streamlit run app.py
+```
+
+A aplicação abrirá automaticamente no seu navegador padrão (geralmente em `http://localhost:8501`).
+
+---
+
+## 📁 Estrutura do Projeto
+
+```
+📦 Media-Ponderada-Xlsx/
+├── app.py               # Código principal da aplicação
+├── requirements.txt     # Bibliotecas necessárias
+└── README.md            # Este arquivo de instruções
+```
+
+---
+
+## 📚 Sobre o arquivo Excel
+
+O arquivo deve conter as seguintes colunas:
+
+- **Qtd.** → Quantidade de itens
+- **Custo Gerencial** → Custo por item
+- **Dt.Entrada** → Data de entrada (para ordenação)
+
+---
